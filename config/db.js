@@ -15,6 +15,7 @@ const sequelize = new Sequelize(
           ssl: {
             require: true,
             rejectUnauthorized: false,
+            ca: fs.readFileSync('../us-east-1-bundle.pem').toString(), 
           },
         }
       : {},
