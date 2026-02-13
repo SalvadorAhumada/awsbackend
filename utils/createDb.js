@@ -10,12 +10,17 @@ if(!dbName) {
 }
 
 const client = new Client({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+  ssl: {
+    require: true,
+    rejectUnauthorized: false,
+  },
 });
+
 
 async function createDatabase() {
   try {
