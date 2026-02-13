@@ -14,7 +14,7 @@ module.exports = {
           ssl: {
             require: true,
             rejectUnauthorized: false,
-            ca: fs.readFileSync('us-east-1-bundle.pem').toString(), 
+            ca: fs.readFileSync('../us-east-1-bundle.pem').toString(), 
           },
         }
       : {},
