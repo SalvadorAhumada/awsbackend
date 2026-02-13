@@ -1,7 +1,10 @@
 const { Sequelize } = require('sequelize');
+const fs = require('fs');
+const path = require('path');
 
 const useSSL = process.env.DB_SSL === 'true';
-
+console.log("USE SSL?", useSSL);
+console.log("cert:", __dirname, 'us-east-1-bundle.pem')
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -15,7 +18,9 @@ const sequelize = new Sequelize(
           ssl: {
             require: true,
             rejectUnauthorized: false,
-            ca: fs.readFileSync('../us-east-1-bundle.pem').toString(), 
+            ca: fs.readFileSync(
+              path.resolve(__dirname, 'us-east-1-bundle.pem')
+            ).toString()
           },
         }
       : {},
